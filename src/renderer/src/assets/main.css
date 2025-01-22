@@ -34,7 +34,6 @@ code {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 80px;
 }
 
 .logo {
@@ -128,24 +127,21 @@ code {
 }
 
 .versions {
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
   position: absolute;
-  bottom: 30px;
-  margin: 0 auto;
-  padding: 15px 0;
-  font-family: 'Menlo', 'Lucida Console', monospace;
-  display: inline-flex;
-  overflow: hidden;
-  align-items: center;
-  border-radius: 22px;
-  background-color: #202127;
+  bottom: 10px;
+  right: 0;
   backdrop-filter: blur(24px);
+  font-family: 'Menlo', 'Lucida Console', monospace;
 }
 
 .versions li {
   display: block;
   float: left;
   border-right: 1px solid var(--ev-c-gray-1);
-  padding: 0 20px;
+  padding: 0 5px;
   font-size: 14px;
   line-height: 14px;
   opacity: 0.8;
