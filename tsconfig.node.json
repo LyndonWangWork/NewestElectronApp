@@ -1,15 +1,31 @@
 {
   "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
   "include": [
+    "src/renderer/src/env.d.ts",
+    "src/renderer/src/**/*.vue",
     "electron.vite.config.*",
     "src/main/**/*",
-    "src/preload/**/*"
+    "src/preload/**/*",
+    "src/**/*.d.ts",
+    "src/types/*.d.ts",
+    "src/**/*.ts"
   ],
   "compilerOptions": {
-    "noUnusedLocals": false,
+    "noUnusedLocals": false, //不检查未使用的变量
+    "noUnusedParameters": false, //不检查未使用的参数
+    // "module": "NodeNext",
     "composite": true,
     "types": [
       "electron-vite/node"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@renderer/*": [
+        "src/renderer/src/*"
+      ],
+      "@/*": [
+        "src/*"
+      ],
+    }
   }
 }
