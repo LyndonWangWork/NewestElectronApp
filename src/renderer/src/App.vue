@@ -1,32 +1,39 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import Versions from './components/Versions.vue'
+import Tabs from '@renderer/components/Tabs.vue'
+// import Header from '@renderer/components/Header.vue'
+import { MENU_BAR_HEIGHT } from '@/common/const'
 
-const ipcHandle = () => window.electron.ipcRenderer.send('ping')
+const tabs: ElectronTab[] = [
+  {
+    label: 'Home',
+    closable: false,
+    key: 'Home'
+  }
+]
+const tabRef = ref<InstanceType<typeof Tabs>>()
+
+const handleClick = (label: string, url: string) => {
+  console.log('handleClick', label, url)
+}
 </script>
 
 <template>
-  <h1
-    class="custom-titlebar select-none absolute top-0 left-0 w-full bg-[#f2f2f2] text-gray-900 h-[35px] flex items-center px-3"
+  <div
+    class="absolute flex top-0 left-0 w-full bg-[--tab-background-color]"
+    :style="{ height: MENU_BAR_HEIGHT + 'px' }"
   >
-    Hello World
-  </h1>
-  <img alt="logo" class="logo" src="./assets/electron.svg" />
-  <div class="creator">Powered by electron-vite</div>
+    <!-- <Header title="Hello Electron"></Header> -->
+    <Tabs :tabs="tabs" ref="tabRef"></Tabs>
+  </div>
   <div class="text">
-    Build an Electron app with
-    <span class="vue">Vue</span>
-    and
-    <span class="ts">TypeScript</span>
-  </div>
-  <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
-  <div class="actions">
-    <div class="action">
-      <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">Documentation</a>
+    <div class="p-2 cursor-pointer" @click="handleClick('baidu', 'https://www.baidu.com')">
+      Baidu
     </div>
-    <div class="action">
-      <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
-    </div>
+    <div class="p-2 cursor-pointer" @click="handleClick('bing', 'https://www.bing.com')">Bing</div>
   </div>
+
   <Versions />
 </template>
 <style lang="less" scoped>

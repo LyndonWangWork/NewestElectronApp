@@ -2,7 +2,11 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import TabsManager from '@/utils/TabManager'
+import { MENU_BAR_HEIGHT } from '@/common/const'
 
+const isDevelopment = process.env.NODE_ENV !== 'production'
+let tabsManager
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -12,8 +16,8 @@ function createWindow(): void {
     autoHideMenuBar: true,
     titleBarStyle: 'hidden',
     titleBarOverlay: {
-      color: '#f2f2f2',
-      height: 35
+      color: '#cdcdcd',
+      height: MENU_BAR_HEIGHT
       // symbolColor: 'white'
     },
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -39,6 +43,8 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+  tabsManager = TabsManager.getInstance()
 }
 
 // This method will be called when Electron has finished
@@ -57,7 +63,10 @@ app.whenReady().then(() => {
   })
 
   // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  ipcMain.on('ping', () => {
+    console.log('pong')
+    tabsManager.createTab('test', 'https://www.baidu.com')
+  })
 
   createWindow()
 
