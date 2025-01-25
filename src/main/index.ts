@@ -44,6 +44,15 @@ function createWindow(): void {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
 
+  mainWindow.on('close', async () => {
+    // // 清除事件
+    // mainWindow.webContents.removeAllListeners()
+    // // 清除 Cookies、Storage、内存等数据
+    // await mainWindow.webContents.session.clearData()
+    // // 销毁窗口
+    // mainWindow.destroy()
+  })
+
   tabsManager = TabsManager.getInstance()
 }
 
