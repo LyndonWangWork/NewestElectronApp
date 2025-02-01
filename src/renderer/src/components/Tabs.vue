@@ -99,6 +99,7 @@ watch(
   }
   :deep(.tabs-content) {
     height: 100%;
+    width: calc(100% - 200px);
   }
 }
 .tab {
