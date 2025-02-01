@@ -6,10 +6,13 @@
     "src/renderer/src/**/*.vue",
     "src/preload/*.d.ts",
     "src/common/*.ts",
+    "src/common/PortBus/*.ts",
     "src/types/*.d.ts",
     // "src/**/*.ts"  // 不能使用这个，否则会导致编译时报错
   ],
   "compilerOptions": {
+    "noUnusedLocals": false, //不检查未使用的变量
+    "noUnusedParameters": false, //不检查未使用的参数
     "composite": true,
     "baseUrl": ".",
     "paths": {

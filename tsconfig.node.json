@@ -6,6 +6,7 @@
     "electron.vite.config.*",
     "src/main/**/*",
     "src/preload/**/*",
+    "src/common/PortBus/*.ts",
     "src/**/*.d.ts",
     "src/types/*.d.ts",
     "src/**/*.ts"

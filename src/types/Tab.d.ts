@@ -5,3 +5,4 @@ declare type ElectronTab = import('vue3-tabs-chrome').Tab & {
   lastActiveAt?: number
   url?: string
 }
+declare type ElectronTabBase = Partial<BaseElectronTab> & Pick<BaseElectronTab, 'url' | 'label'>

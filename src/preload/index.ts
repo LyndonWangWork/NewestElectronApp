@@ -1,6 +1,7 @@
 import { contextBridge } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
-
+import PortBus from '../common/PortBus/preload'
+// PortBus.init()
 // Custom APIs for renderer
 const api = {}
 
@@ -11,6 +12,7 @@ if (process.contextIsolated) {
   try {
     contextBridge.exposeInMainWorld('electron', electronAPI)
     contextBridge.exposeInMainWorld('api', api)
+    contextBridge.exposeInMainWorld('portBus', PortBus)
   } catch (error) {
     console.error(error)
   }
