@@ -54,7 +54,7 @@ const handleClick = (label: string, url: string) => {
 
 <template>
   <div
-    class="absolute flex top-0 left-0 w-full bg-[--tab-background-color]"
+    class="absolute flex top-0 left-0 w-full bg-(--tab-background-color)"
     :style="{ height: MENU_BAR_HEIGHT + 'px' }"
   >
     <!-- <Header title="Hello Electron"></Header> -->

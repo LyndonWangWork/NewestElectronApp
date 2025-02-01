@@ -3,7 +3,7 @@
     ref="tabRef"
     :tabs="tabs"
     v-model="tab"
-    class="w-full text-gray-900 !bg-[--tab-background-color]"
+    class="w-full text-gray-900 !bg-(--tab-background-color)"
     @remove="onRemove"
   />
 </template>
@@ -100,48 +100,6 @@ watch(
   :deep(.tabs-content) {
     height: 100%;
     width: calc(100% - 200px);
-  }
-}
-.tab {
-  display: flex;
-  align-items: center;
-  background-color: var(--tab-background-color);
-  border: none;
-  border-radius: 5px;
-  color: #595c78;
-  cursor: pointer;
-  position: relative;
-  height: 100%;
-  min-width: 80px;
-  text-align: center;
-  justify-content: center;
-  font-size: 14px;
-  &.active {
-    background-color: #fff;
-    border-radius: 12px 12px 0 0;
-    box-shadow:
-      12px 12px 0 0 #fff,
-      -12px 12px 0 0 #fff;
-    &::before {
-      content: '';
-      position: absolute;
-      left: -12px;
-      bottom: 0;
-      width: 12px;
-      height: 40px;
-      background: var(--tab-background-color);
-      border-radius: 0 0 12px 0;
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      right: -12px;
-      bottom: 0;
-      width: 12px;
-      height: 40px;
-      background: var(--tab-background-color);
-      border-radius: 0 0 0 12px;
-    }
   }
 }
 </style>
