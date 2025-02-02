@@ -8,11 +8,13 @@ import { MENU_BAR_HEIGHT } from '@/common/const'
 import RendererBus from '@/common/PortBus/renderer'
 // RendererBus.init()
 
-// RendererBus.on('test', (messageEvent, ...args) => {
-//   console.log('test', messageEvent, args)
-//   const [data] = args
-//   RendererBus.emit('testResult', { event: 'testResult', result: data.test * 2 })
-// })
+const selectionText = ref('')
+const pos = ref([0, 0])
+RendererBus.on('selectionText', (messageEvent, ...args) => {
+  const [data] = args
+  selectionText.value = data.text
+  pos.value = data.pos
+})
 
 // RendererBus.on('tabChanged', (_messageEvent, ...args) => {
 //   const [allTabs] = args
@@ -65,6 +67,8 @@ const handleClick = (label: string, url: string) => {
       Baidu
     </div>
     <div class="p-2 cursor-pointer" @click="handleClick('bing', 'https://www.bing.com')">Bing</div>
+    <div class="p-2">Selection Text: {{ selectionText }}</div>
+    <div class="p-2">pos: {{ pos }}</div>
   </div>
 
   <Versions />

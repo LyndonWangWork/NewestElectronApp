@@ -5,6 +5,28 @@ import icon from '../../resources/icon.png?asset'
 import TabsManager from '@/utils/TabManager'
 import { MENU_BAR_HEIGHT } from '@/common/const'
 import MainProcess from '@/common/PortBus/main'
+import * as native from '../../resources/native/node-rdev.win32-x64-msvc.node'
+native.default.startListener((event) => {
+  //{"event_type":"ButtonRelease","name":null,"time":{"secs_since_epoch":1738476184,"nanos_since_epoch":857213900},"data":"{\"key\":\"Left\"}"}
+  try {
+    const json = JSON.parse(event)
+    switch (json.event_type) {
+      case 'ButtonRelease':
+        const data = JSON.parse(json?.data || '{}')
+        if (data.key === 'Left') {
+          const text = native.default.getSelectionText()
+          const pos = native.default.getMousePos()
+          if (text) {
+            MainProcess.emit('selectionText', { text, pos: pos.split('_') })
+          }
+        }
+        break
+    }
+    // console.log('event', event)
+  } catch (error) {
+    console.error(error)
+  }
+})
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 let tabsManager: TabsManager
