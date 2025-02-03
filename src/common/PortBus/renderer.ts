@@ -21,12 +21,12 @@ class RendererBus {
   }
   onMessage(msgEvent?: MessageEvent) {
     const data = msgEvent?.data
-    console.log(data, this.listeners)
     const { event } = data
     if (!this.listeners[event]) return
-    this.listeners[event].forEach((listener) => listener(msgEvent, ...msgEvent?.data.args))
+    this.listeners[event].forEach((listener) => listener(msgEvent, ...msgEvent?.data?.args))
   }
   emit(event: string, data: any) {
+    if (!data.event) data.event = event
     console.log('renderer emit', event, data)
     this.port?.postMessage(data)
   }
