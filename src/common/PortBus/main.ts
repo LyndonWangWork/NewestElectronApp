@@ -30,8 +30,13 @@ class MainPort {
       this.emitTo(id, event, data)
       return
     }
-    if (!this.listeners[event]) return
-    this.listeners[event].forEach((listener) => listener(data))
+    if (this.listeners[event]) {
+      this.listeners[event].forEach((listener) => listener(data))
+    }
+    Array.from(this.portsMap.values()).forEach((port) => {
+      port.postMessage({ event, args: [data] })
+    })
+    // this.listeners[event].forEach((listener) => listener(data))
   }
   on(event: string, listener: Function) {
     if (!this.listeners[event]) {
