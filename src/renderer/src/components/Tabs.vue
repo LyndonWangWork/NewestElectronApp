@@ -53,10 +53,6 @@ RendererBus.on('setTab', (_messageEvent, ...args) => {
   })
 })
 
-RendererBus.on('addTab', (_messageEvent, ...args) => {
-  console.log(args)
-})
-
 // interface Props {
 //   tabs?: ElectronTab[]
 //   activeTab?: number
