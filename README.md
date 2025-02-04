@@ -1,34 +1,17 @@
-# electron-app
+# Newest Electron App
 
-An Electron application with Vue and TypeScript
+[中文](/README-zh.md)
 
-## Recommended IDE Setup
+Build your Electron application using the latest technology stack
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
 
-## Project Setup
+![](/docs/image1.gif)
 
-### Install
-
-```bash
-$ npm install
-```
-
-### Development
-
-```bash
-$ npm run dev
-```
-
-### Build
-
-```bash
-# For windows
-$ npm run build:win
-
-# For macOS
-$ npm run build:mac
-
-# For Linux
-$ npm run build:linux
-```
+## Components
+- [x] Multi-tab component [vue-tabs-chrome](https://github.com/viewweiwu/vue-tabs-chrome)
+- [x] Native plugins (support screen word capture/global mouse and keyboard events/get mouse position) [ElectronNativeAddons](https://github.com/LyndonWangWork/ElectronNativeAddons)
+- [x] Inter-process communication PortBus (supports communication between the main process and renderer process, as well as between renderer processes), see src/common/PortBus
+- [x] Based on [Electron-vite](https://github.com/alex8088/electron-vite/)
+- [x] [Tailwindcss V4.0](https://tailwindcss.com/docs/installation/)
+- [x] [Electron V34](https://www.electronjs.org/zh/docs/latest/)
+- [x] [Iconify](https://iconify.design/)
