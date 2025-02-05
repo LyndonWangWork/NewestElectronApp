@@ -4,8 +4,10 @@
 
 Build your Electron application using the latest technology stack
 
-
-![](/docs/image1.gif)
+## Tabs
+![](/docs/tabs.gif)
+## Events
+![](/docs/events.gif)
 
 ## Components
 - [x] Multi-tab component [vue-tabs-chrome](https://github.com/viewweiwu/vue-tabs-chrome)
@@ -15,3 +17,4 @@ Build your Electron application using the latest technology stack
 - [x] [Tailwindcss V4.0](https://tailwindcss.com/docs/installation/)
 - [x] [Electron V34](https://www.electronjs.org/zh/docs/latest/)
 - [x] [Iconify](https://iconify.design/)
+- [x] [Vitese](https://github.com/antfu-collective/vitesse), see vitese branch

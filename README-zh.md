@@ -5,7 +5,10 @@
 使用最新技术栈构建你的 Electron 应用
 
 
-![](/docs/image1.gif)
+## Tabs
+![](/docs/tabs.gif)
+## Events
+![](/docs/events.gif)
 
 ## 组件
 - [x] 多标签页组件 [vue-tabs-chrome](https://github.com/viewweiwu/vue-tabs-chrome)
@@ -15,3 +18,4 @@
 - [x] [Tailwindcss V4.0](https://tailwindcss.com/docs/installation/)
 - [x] [Electron V34](https://www.electronjs.org/zh/docs/latest/)
 - [x] [Iconify](https://iconify.design/)
+- [x] [Vitese](https://github.com/antfu-collective/vitesse), 见vitese分支
