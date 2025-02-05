@@ -2,6 +2,7 @@
   "extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
   "include": [
     "src/renderer/src/env.d.ts",
+    "src/renderer/src/typed-router.d.ts",
     "src/renderer/src/**/*",
     "src/renderer/src/**/*.vue",
     "src/preload/*.d.ts",
@@ -14,8 +15,21 @@
     "noUnusedLocals": false, //不检查未使用的变量
     "noUnusedParameters": false, //不检查未使用的参数
     "composite": true,
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
     "baseUrl": ".",
+    "types": [
+      "vitest",
+      "vite/client",
+      "vite-plugin-vue-layouts/client",
+      "vite-plugin-pwa/client",
+      "unplugin-vue-macros/macros-global",
+      "unplugin-vue-router/client",
+    ],
     "paths": {
+      "~/*": [
+        "src/renderer/src/*"
+      ],
       "@renderer/*": [
         "src/renderer/src/*"
       ],
@@ -23,5 +37,11 @@
         "src/*"
       ],
     }
-  }
+  },
+  "vueCompilerOptions": {
+    "plugins": [
+      "@vue-macros/volar/define-models",
+      "@vue-macros/volar/define-slots"
+    ]
+  },
 }
