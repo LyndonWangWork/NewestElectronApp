@@ -31,7 +31,7 @@ class MainPort {
     console.log(data)
     const { event, id } = data
     if (id) {
-      this.emitTo(id, event, data)
+      this.emitTo(id, event, data?.data)
       return
     }
     if (this.listeners[event]) {

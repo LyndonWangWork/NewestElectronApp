@@ -31,6 +31,7 @@ class RendererBus {
     this.port?.postMessage(data)
   }
   emitTo(id: string, event: string, data: any) {
+    if (!data.event) data.event = event
     console.log('renderer emitTo', id, event, data)
     this.port?.postMessage({ id, event, data })
   }
