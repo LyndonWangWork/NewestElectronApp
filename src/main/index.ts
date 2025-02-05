@@ -31,6 +31,7 @@ native.default.startListener((event) => {
 const isDevelopment = process.env.NODE_ENV !== 'production'
 let tabsManager: TabsManager
 function createWindow(id?: string): BrowserWindow {
+  if (!id) id = Date.now().toString()
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 900,
@@ -68,6 +69,7 @@ function createWindow(id?: string): BrowserWindow {
   }
 
   mainWindow.on('close', async () => {
+    console.log('close')
     // // 清除事件
     // mainWindow.webContents.removeAllListeners()
     // // 清除 Cookies、Storage、内存等数据
@@ -76,9 +78,11 @@ function createWindow(id?: string): BrowserWindow {
     // mainWindow.destroy()
   })
 
-  tabsManager = TabsManager.getInstance()
+  // mainWindow.webContents.on('did-finish-load', () => {
+  // })
+  // mainWindow.webContents.on('did-stop-loading', () => {
+  // })
 
-  MainProcess.connectWindow(mainWindow, id || Date.now().toString())
   // MainProcess.emit('test', { test: 21 })
   // MainProcess.on('testResult', (data) => {
   //   console.log('testResult', data)
@@ -97,6 +101,8 @@ function createWindow(id?: string): BrowserWindow {
   // // 预加载脚本将接收此 IPC 消息并将端口
   // // 传输到主进程。
   // mainWindow.webContents.postMessage('register-port', null, [port1])
+
+  MainProcess.connectWindow(mainWindow, id)
   return mainWindow
 }
 
@@ -142,7 +148,13 @@ app.whenReady().then(() => {
     tabsManager.removeTabByKey(data.key)
   })
 
+  MainProcess.on('openWin', (data) => {
+    const secWin = createWindow()
+  })
+
   createWindow()
+
+  tabsManager = TabsManager.getInstance()
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

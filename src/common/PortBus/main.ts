@@ -11,6 +11,10 @@ class MainPort {
   }
 
   connectWindow(win: Electron.BrowserWindow, id: string) {
+    if (this.portsMap.has(id)) {
+      console.error(`win id for ${id} already exists`)
+      return
+    }
     const { port1, port2 } = new MessageChannelMain()
     port1.on('message', (event) => {
       console.log('port1 message', event)
