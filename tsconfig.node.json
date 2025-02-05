@@ -2,6 +2,7 @@
   "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
   "include": [
     "src/renderer/src/env.d.ts",
+    "src/renderer/src/typed-router.d.ts",
     "src/renderer/src/**/*.vue",
     "electron.vite.config.*",
     "src/main/**/*",
@@ -12,12 +13,20 @@
     "src/**/*.ts"
   ],
   "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
     "noUnusedLocals": false, //不检查未使用的变量
     "noUnusedParameters": false, //不检查未使用的参数
     // "module": "NodeNext",
     "composite": true,
     "types": [
-      "electron-vite/node"
+      "vitest",
+      "vite/client",
+      "vite-plugin-vue-layouts/client",
+      "vite-plugin-pwa/client",
+      "unplugin-vue-macros/macros-global",
+      "unplugin-vue-router/client",
+      "electron-vite/node",
     ],
     "baseUrl": "./",
     "paths": {
